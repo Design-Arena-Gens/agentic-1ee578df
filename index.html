@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلام - خوش آمدید</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            animation: fadeIn 0.8s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: #667eea;
+            margin-bottom: 20px;
+            animation: wave 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes wave {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(-10deg);
+            }
+            75% {
+                transform: rotate(10deg);
+            }
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .time {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .emoji-container {
+            font-size: 3rem;
+            margin: 20px 0;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .interactive-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: inherit;
+        }
+
+        .interactive-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.5);
+        }
+
+        .interactive-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .message {
+            margin-top: 20px;
+            font-size: 1.3rem;
+            color: #667eea;
+            font-weight: bold;
+            min-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👋</h1>
+        <h2>سلام و درود!</h2>
+        <p>به وب‌سایت ما خوش آمدید. امیدواریم روز خوبی داشته باشید.</p>
+
+        <div class="emoji-container">🌟✨💫</div>
+
+        <div class="time" id="currentTime"></div>
+
+        <button class="interactive-btn" onclick="showGreeting()">کلیک کنید</button>
+
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const options = {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            document.getElementById('currentTime').textContent =
+                now.toLocaleDateString('fa-IR', options);
+        }
+
+        const greetings = [
+            'روز شما پر از شادی باشد! 🎉',
+            'شما عالی هستید! 🌟',
+            'آرزوی بهترین‌ها را برای شما داریم! 💝',
+            'امروز روز خوبی است! ☀️',
+            'لبخند بزنید! 😊',
+            'شما می‌توانید! 💪',
+            'دنیا متعلق به شماست! 🌍'
+        ];
+
+        function showGreeting() {
+            const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+            document.getElementById('message').textContent = randomGreeting;
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html>
